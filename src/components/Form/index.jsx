@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 
 
 
+
 export function Form() {
 
 
@@ -15,6 +16,29 @@ export function Form() {
     }
 
     console.log(errors);
+
+
+    // const fecth = fetch('http://localhost:3000' ,{
+    //     method: "POST", 
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    // })
+    
+
+    const fethAPI = () => {
+        const url = `http://localhost:3000/livros`;
+
+        fetch(url).then(response => response.json()
+        .then(biblioteca => {
+            console.log(biblioteca);
+        })
+        )
+    }
+
+    fethAPI()
+
 
     return(
         <Container>
