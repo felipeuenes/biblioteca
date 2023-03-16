@@ -1,7 +1,8 @@
 import './style'
 import { Container } from './style'
 import { useForm } from 'react-hook-form'
-
+import { useState } from 'react';
+import axios  from 'axios';
 
 
 
@@ -17,34 +18,30 @@ export function Form() {
 
     console.log(errors);
 
-
-    // const fecth = fetch('http://localhost:3000' ,{
-    //     method: "POST", 
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    // })
     
 
-    const fethAPI = () => {
-        const url = `http://localhost:3000/livros`;
+    const API = 'http://localhost:3000/cadastroLivros'
 
-        fetch(url).then(response => response.json()
-        .then(biblioteca => {
-            console.log(biblioteca);
+    function onSubmit(data) {
+    
+        console.log(data);
+
+        axios.post(API, data)
+        .then((res) => {
+            alert(res.data)
+            reset()
         })
-        )
+        .catch((error) => alert(error.response.data));
+
+        
+      
     }
-
-    fethAPI()
-
 
     return(
         <Container>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <section>
-                        <label htmlFor="nome">Nome do livro:</label>
+                        <label htmlFor="name">Nome do livro:</label>
                         <input type="text" id='name' {...register('name', {required: true})}/>
                         {errors.name && <span className='erro'>Campo obirgatório</span>}
                     </section>
@@ -58,7 +55,7 @@ export function Form() {
 
                     <button>CADASTRAR</button>
 
-                    
+                    {/* <p>{biblioteca.name}</p> */}
                 </form>
 
 
