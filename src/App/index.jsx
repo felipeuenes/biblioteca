@@ -19,9 +19,10 @@ export function App() {
                 <Outlet/>
               </main>
 
-
-
+    <footer>
           <Footer/>
+    </footer>
+
     </div>
   )
 }

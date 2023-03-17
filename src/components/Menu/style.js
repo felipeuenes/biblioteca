@@ -6,10 +6,12 @@ export const Container = styled.div`
    background: #000c;
    width: 100%;
    padding: 2.4rem;
-   height: 100vh;
+   height: 100%;
    position: absolute;
+   left: 0;
+   top: 0;
 
-   z-index: 1;
+   z-index: 2;
    display: grid;
    place-content: center;
 
@@ -27,6 +29,10 @@ export const Container = styled.div`
 
     a{
         color: white;
+        text-decoration: none;
+    }
+    a:hover{
+        color: #888;
     }
 
 

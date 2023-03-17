@@ -3,7 +3,7 @@ import './style';
 import { Container } from './style';
 import { IoMdMenu, IoMdClose } from 'react-icons/io'
 import { useState } from 'react';
-
+import logovb from '../../images/logo-vb.png'
 
 
 
@@ -32,6 +32,9 @@ export function Header() {
            
         </div>
          
+         <div id='logo'>
+            <img src={logovb} alt="logo" />
+         </div>
 
 
 

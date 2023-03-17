@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { App } from "../App/index";
+import { Footer } from "../components/Footer";
 import { CadasLivro } from "../pages/CadastroLivro/index";
 import { Emprestimo } from "../pages/Emprestimos";
 
