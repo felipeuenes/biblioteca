@@ -11,6 +11,7 @@ export const Container = styled.div`
     bottom: 0;
     left: 0;
     color: white;
+    z-index: 1;
 
 
 `;
