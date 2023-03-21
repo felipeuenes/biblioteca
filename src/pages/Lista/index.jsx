@@ -5,6 +5,8 @@ import { useState, useEffect } from "react"
 import axios from 'axios'
 import Modal from 'react-bootstrap/Modal'
 import { FormUpdate } from "../../components/FormUpdate"
+import { BsFillTrash3Fill } from 'react-icons/bs'
+import { Form } from "../../components/Form"
 
 
 
@@ -13,7 +15,14 @@ export function Lista() {
 
     const [listStudents, setListStudents] = useState([])
     const [showModal, setShowModal] = useState(false);
+    const [showModalRegister, setShowModalRegister] = useState(false);
     const [studentData, setStudentData] = useState({});
+
+    const modalRegisterOpen = () => {
+
+        setShowModalRegister(true)
+    }
+        const modalCloseRegister = () => setShowModalRegister(false);
 
 
     const modalOpen = (studentID) => {
@@ -29,7 +38,7 @@ export function Lista() {
 
 
 
-    const API = 'http://localhost:3000/livros';
+    const API = 'http://localhost:3000/livros/';
 
     function fetchStudents(){
         axios.get(API)
@@ -45,9 +54,44 @@ export function Lista() {
 
 
 
+
+
+    function deleteStudent(idlivros){
+
+        const isDelete = confirm('Deseja deletar?');
+        if (isDelete) {
+         axios.delete(API + `${idlivros}`)
+         .then((res) => {
+           alert(res.data);
+           fetchStudents();
+           
+         }).catch((console.error(error)));
+        //  .catch((error) => alert(error.response.data));
+        }
+     }
+    //  console.log(studentData.id);
+
+
+
     return(
        <Container>
         <h1>LIVROS DA BIBLIOTECA</h1>
+        <section>
+            <button onClick={() => modalRegisterOpen()}>Cadastrar novo</button>
+
+
+            <Modal show={showModalRegister} onHide={modalCloseRegister} >
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Cadastro de novo livro</Modal.Title>
+                                </Modal.Header>
+                            <Modal.Body>
+                                        {/* <FormUpdate modalClose={modalClose} studentData={studentData}/> */}
+                                        <Form/>
+
+                            </Modal.Body>
+                        
+             </Modal>
+        </section>
 <section>
 
         <Table striped bordered hover>
@@ -71,6 +115,7 @@ export function Lista() {
                                         
                                         <td>
                                             <BiEdit className='editIcon'  onClick={() => modalOpen(students.id)}/>
+                                            <BsFillTrash3Fill onClick={() => deleteStudent(students.idlivros)}/>
                                         </td>
                                         
                                     </tr>
@@ -89,7 +134,7 @@ export function Lista() {
                         </Table>
                             </section>
                             <section>
-                            <Modal show={showModal} onHide={modalClose}>
+                            <Modal show={showModal} onHide={modalClose} >
                                 <Modal.Header closeButton>
                                     <Modal.Title>Aluno</Modal.Title>
                                 </Modal.Header>

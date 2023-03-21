@@ -1,7 +1,7 @@
 import './style'
 import { Container } from './style'
 import { useForm } from 'react-hook-form'
-import { useState } from 'react';
+// import { useState } from 'react';
 import axios  from 'axios';
 
 
@@ -12,9 +12,9 @@ export function Form() {
 
 
     const { register, handleSubmit, formState: { errors } } = useForm()
-    function onSubmit(data){
-        console.log(data);
-    }
+    // function onSubmit(data){
+    //     console.log(data);
+    // }
 
     console.log(errors);
 

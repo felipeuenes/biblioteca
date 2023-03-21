@@ -38,7 +38,7 @@ export function FormUpdate({modalClose, studentData}){
         <Container>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
 
-                <Row className="mb-3">
+                <Row className="mb-3"  >
                 <Form.Group as={Col} md="2" controlId="id">
                 <Form.Label>ID</Form.Label>
                 <Form.Control
@@ -88,35 +88,7 @@ export function FormUpdate({modalClose, studentData}){
 
                 </Form.Group>
                 </Row>
-                <Row className="mb-3">
-                <Form.Group as={Col} md="6" controlId="phone">
-                <Form.Label>Telefone:</Form.Label>
-                <Form.Control
-                type="tel"
-                placeholder="(00) 9 9999-9999"
-                required
-                name='phone'
-                value={studentDataForm.fone}
-                />
-                <Form.Control.Feedback type="invalid">
-                    Campo obrigatório!
-                </Form.Control.Feedback>
-                </Form.Group>
-
-                <Form.Group as={Col} md="6" controlId="city">
-                <Form.Label>Cidade:</Form.Label>
-                <Form.Control
-                type="text"
-                placeholder="Cidade do aluno"
-                required
-                name='city'
-                value={studentDataForm.city}
-                />
-                <Form.Control.Feedback type="invalid">
-                    Campo obrigatório!
-                </Form.Control.Feedback>
-                </Form.Group>
-                </Row>
+               
 
                 <Modal.Footer>
                     <Button variant="danger" onClick={modalClose}>
