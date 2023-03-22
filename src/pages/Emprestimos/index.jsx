@@ -1,10 +1,11 @@
-
+import { Container } from "./style"
 
 export function Emprestimo() {
     return(
-        <>
-            <h1>EMPRESTIMOS</h1>
-        
-        </>
+        <Container>
+            <h1>Emprestimos</h1>
+
+
+        </Container>
     )
 }

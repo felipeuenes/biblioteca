@@ -117,7 +117,7 @@ export function Lista() {
                                         <td>{students.autor}</td>
                                         
                                         <td>
-                                            <BiEdit className='editIcon'  onClick={() => modalOpen(students.id)}/>
+                                            <BiEdit className='editIcon' onClick={() => modalOpen(students.idlivros)}/>
                                             <BsFillTrash3Fill onClick={() => deleteStudent(students.idlivros)}/>
                                         </td>
                                         

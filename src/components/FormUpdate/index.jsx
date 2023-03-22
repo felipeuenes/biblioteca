@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-
+import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal'
 import { Container } from './style';
@@ -21,17 +21,46 @@ export function FormUpdate({modalClose, studentData}){
     });
   
     console.log(studentDataForm);
+
+    const API = 'http://localhost:3000/livros/';
   
+
+    function updateBook(id){
+      axios.put(API + `${id}`, studentDataForm)
+      .then((res) => {
+        alert(res.data);
+        fetchStudents();
+        modalClose()
+      })
+      .catch((error) => alert(error.response.data));
+  
+     }
+
+
     const handleSubmit = (event) => {
       const form = event.currentTarget;
       if (form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
       }
-  
+  console.log(studentDataForm.id);
       setValidated(true);
+      updateBook(studentDataForm.id)
+      // finalizar
     };
   
+    // console.log(studentDataForm.id);
+
+   
+
+
+      function handleInputsChange(event){
+        const {name, value} = event.target;
+        console.log({name, value});
+        setStudentDataForm({...studentDataForm,
+        [name]: value
+      })
+    }
 
     return(
         
@@ -48,6 +77,7 @@ export function FormUpdate({modalClose, studentData}){
                 disabled
                 name='id'
                 value={studentDataForm.id}
+               
                 />
                 <Form.Control.Feedback type="invalid">
                     Campo obrigatório!
@@ -61,10 +91,11 @@ export function FormUpdate({modalClose, studentData}){
                 <Form.Label>Nome:</Form.Label>
                 <Form.Control
                 type="text"
-                placeholder="Nome do aluno"
+                placeholder="Nome do livro"
                 required 
                 name='name'
                 value={studentDataForm.name}
+                onChange={handleInputsChange}
                 />
                 <Form.Control.Feedback type="invalid">
                     Campo obrigatório!
@@ -76,11 +107,12 @@ export function FormUpdate({modalClose, studentData}){
                 <Form.Group md="5" controlId="text">
                 <Form.Label>Autor</Form.Label>
                 <Form.Control
-                type="email"
-                placeholder="Email do aluno"
+                type="text"
+                placeholder="Autor"
                 required
                 name='email'
                 value={studentDataForm.autor}
+                onChange={handleInputsChange}
                 />
                 <Form.Control.Feedback type="invalid">
                     Campo obrigatório!
@@ -91,9 +123,7 @@ export function FormUpdate({modalClose, studentData}){
                
 
                 <Modal.Footer>
-                    <Button variant="danger" onClick={modalClose}>
-                        Delete
-                    </Button>
+                    
                 
                     <Button type="submit" variant='success'>Atualizar</Button>
                 </Modal.Footer>
