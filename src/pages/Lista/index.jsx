@@ -43,14 +43,14 @@ export function Lista() {
     function fetchStudents(){
         axios.get(API)
         .then((res) => setListStudents(res.data))
-        .catch((error) => alert(error));
+        .catch((error) => alert(error.response.data));
     }
 
     useEffect(() => {
         fetchStudents();
     }, [])
 
-    console.log(listStudents);
+    // console.log(listStudents);
 
 
 
@@ -65,7 +65,7 @@ export function Lista() {
            alert(res.data);
            fetchStudents();
            
-         }).catch((console.error(error)));
+         }).catch((error) => alert(error.response.data));
         //  .catch((error) => alert(error.response.data));
         }
      }
@@ -77,16 +77,19 @@ export function Lista() {
        <Container>
         <h1>LIVROS DA BIBLIOTECA</h1>
         <section>
-            <button onClick={() => modalRegisterOpen()}>Cadastrar novo</button>
+            <button id="cadastro" onClick={() => modalRegisterOpen()}>Cadastrar novo</button>
 
 
             <Modal show={showModalRegister} onHide={modalCloseRegister} >
                                 <Modal.Header closeButton>
-                                    <Modal.Title>Cadastro de novo livro</Modal.Title>
+                                    <Modal.Title>CADASTRO DE NOVO LIVRO</Modal.Title>
                                 </Modal.Header>
                             <Modal.Body>
                                         {/* <FormUpdate modalClose={modalClose} studentData={studentData}/> */}
-                                        <Form/>
+                                        <Form
+                                        fetchStudents={fetchStudents}
+                                        modalCloseRegister={modalCloseRegister}
+                                        />
 
                             </Modal.Body>
                         

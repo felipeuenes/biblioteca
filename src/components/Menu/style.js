@@ -3,25 +3,27 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
 
-   background: #000c;
-   width: 100%;
+  
+  
    padding: 2.4rem;
    height: 100%;
-   position: absolute;
-   left: 0;
-   top: 0;
+  
+   display: flex;
+   justify-content: center;
+   align-items: center;
 
    z-index: 2;
-   display: grid;
-   place-content: center;
+   margin-right: 15.0rem;
+   
 
    ul{
         list-style: none;
-        font-size: 2.6rem;
+        font-size: 2.0rem;
         text-align: center;
 
-        display: grid;
-        gap: 4.8rem;
+        display: flex;
+        gap: 2.6rem;
+
         
     }
 
@@ -32,7 +34,7 @@ export const Container = styled.div`
         text-decoration: none;
     }
     a:hover{
-        color: #888;
+        color: #ddd;
     }
 
 

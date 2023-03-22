@@ -7,11 +7,11 @@ import axios  from 'axios';
 
 
 
-export function Form() {
+export function Form({fetchStudents, modalCloseRegister}) {
 
 
 
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const { register, handleSubmit, formState: { errors }, reset } = useForm()
     // function onSubmit(data){
     //     console.log(data);
     // }
@@ -29,9 +29,11 @@ export function Form() {
         axios.post(API, data)
         .then((res) => {
             alert(res.data)
+            fetchStudents()
             reset()
+            modalCloseRegister()
         })
-        .catch((error) => alert(error.response.data));
+        .catch((error) => alert(error.response.data))
 
         
       

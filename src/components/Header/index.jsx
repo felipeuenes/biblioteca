@@ -15,7 +15,7 @@ export function Header() {
 
     return(
         <Container>
-            <button onClick={toggleMenu}>
+            {/* <button onClick={toggleMenu}>
 
                 {
                     menuActive ? 
@@ -30,11 +30,13 @@ export function Header() {
                 menuActive && <Menu/>
             }
            
-        </div>
-         
+        </div> */}
          <div id='logo'>
             <img src={logovb} alt="logo" />
          </div>
+
+        <Menu/>
+         
 
 
 

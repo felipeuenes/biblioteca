@@ -14,7 +14,7 @@ export function Menu(){
 
             <ul>
              <NavLink to='/'> <li>INÍCIO</li></NavLink>
-             <NavLink to='/cadastroLivros'> <li>CADASTRAR LIVRO</li></NavLink>
+             
                <NavLink to='/emprestimos'> <li>EMPRÉSTIMOS</li></NavLink>
                 <NavLink to='/lista'><li>LISTA DE LIVROS</li></NavLink>
                

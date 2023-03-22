@@ -4,12 +4,13 @@ import styled from "styled-components";
 export const Container = styled.div`
 
 
-    width: 50.0rem;
+    width: 80%;
     margin: 1.6rem;
-    padding: 3.2rem;
-    border: .1rem solid black;
+    /* border: .1rem solid black; */
     border-radius: .8rem;
     font-size: 1.6rem;
+    margin: 0 auto;
+    margin-bottom: 1.6rem;
 
 
     section{
