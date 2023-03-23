@@ -7,7 +7,18 @@ export const Container = styled.div`
     margin: 0 auto;
     font-size: 1.6rem;
     margin-top: 3.0rem;
-
+    
+    article{
+        display: flex;
+        gap: 15.0rem;
+    }
+    article input{
+        width: 30.0rem;
+    }
+    .searchIcon{
+        position: absolute;
+        left: 50%;
+    }
     h1{
         text-align: center;
         margin-bottom: 2.4rem;

@@ -10,11 +10,12 @@ import { Container } from './style';
 
 
 
+
 export function FormUpdate({modalClose, studentData}){
 
     const [validated, setValidated] = useState(false);
     const [studentDataForm, setStudentDataForm] = useState({
-      id: studentData.idlivros,
+      idlivros: studentData.idlivros,
       name: studentData.name,
       autor: studentData.autor,
       
@@ -31,6 +32,7 @@ export function FormUpdate({modalClose, studentData}){
         alert(res.data);
         fetchStudents();
         modalClose()
+       
       })
       .catch((error) => alert(error.response.data));
   
@@ -43,13 +45,13 @@ export function FormUpdate({modalClose, studentData}){
         event.preventDefault();
         event.stopPropagation();
       }
-  console.log(studentDataForm.id);
+  console.log(studentDataForm.idlivros);
       setValidated(true);
-      updateBook(studentDataForm.id)
-      // finalizar
+      updateBook(studentDataForm.idlivros)
+    
     };
   
-    // console.log(studentDataForm.id);
+  
 
    
 
@@ -65,6 +67,11 @@ export function FormUpdate({modalClose, studentData}){
     return(
         
         <Container>
+          <article>
+           
+            <section> 
+
+
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
 
                 <Row className="mb-3"  >
@@ -76,8 +83,8 @@ export function FormUpdate({modalClose, studentData}){
                 required
                 disabled
                 name='id'
-                value={studentDataForm.id}
-               
+                value={studentDataForm.idlivros}
+                
                 />
                 <Form.Control.Feedback type="invalid">
                     Campo obrigatório!
@@ -110,7 +117,7 @@ export function FormUpdate({modalClose, studentData}){
                 type="text"
                 placeholder="Autor"
                 required
-                name='email'
+                name='autor'
                 value={studentDataForm.autor}
                 onChange={handleInputsChange}
                 />
@@ -129,7 +136,9 @@ export function FormUpdate({modalClose, studentData}){
                 </Modal.Footer>
 
                 </Form>
+                </section>
 
+                </article>
                 </Container>
        
     )

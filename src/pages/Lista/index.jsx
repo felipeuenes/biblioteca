@@ -7,6 +7,7 @@ import Modal from 'react-bootstrap/Modal'
 import { FormUpdate } from "../../components/FormUpdate"
 import { BsFillTrash3Fill } from 'react-icons/bs'
 import { Form } from "../../components/Form"
+import { BsSearch } from 'react-icons/bs'
 
 
 
@@ -17,6 +18,27 @@ export function Lista() {
     const [showModal, setShowModal] = useState(false);
     const [showModalRegister, setShowModalRegister] = useState(false);
     const [studentData, setStudentData] = useState({});
+
+
+    const [searchStudent, setSearchStudent] = useState('')
+
+    const filterStudents = listStudents.filter((student) => {
+        return(
+            String(student.idlivros).toLowerCase().includes(searchStudent.toLowerCase()) ||
+            student.name.toLowerCase().includes(searchStudent.toLowerCase()) ||
+            student.autor.toLowerCase().includes(searchStudent.toLowerCase()) 
+
+        )
+    })
+
+    console.log(filterStudents);
+
+
+    // const [studentDataForm, setStudentDataForm] = useState({
+    //     idlivros: studentData.idlivros,
+    //     autor: studentData.autor,
+        
+    //   });
 
     const modalRegisterOpen = () => {
 
@@ -30,7 +52,7 @@ export function Lista() {
         setShowModal(true)
         console.log(studentID);
 
-        const student = listStudents.findIndex(student => student.id == studentID);
+        const student = listStudents.findIndex(student => student.idlivros == studentID);
         setStudentData(listStudents[student])
     }
         const modalClose = () => setShowModal(false);
@@ -56,11 +78,11 @@ export function Lista() {
 
 
 
-    function deleteStudent(idlivros){
+    function deleteStudent(id){
 
         const isDelete = confirm('Deseja deletar?');
         if (isDelete) {
-         axios.delete(API + `${idlivros}`)
+         axios.delete(API + `${id}`)
          .then((res) => {
            alert(res.data);
            fetchStudents();
@@ -76,6 +98,8 @@ export function Lista() {
     return(
        <Container>
         <h1>LIVROS DA BIBLIOTECA</h1>
+        <article>
+
         <section>
             <button id="cadastro" onClick={() => modalRegisterOpen()}>Cadastrar novo</button>
 
@@ -95,6 +119,20 @@ export function Lista() {
                         
              </Modal>
         </section>
+        <section>
+            <div className='inputSection'>
+                        <label htmlFor="inputSearchStudents" className='labelBusca'>Buscar livro:</label>
+                        {/* <BsSearch className='searchIcon'/> */}
+                        <input
+                        type="text"
+                        id='inputSearchStudents'
+                        placeholder='Pesquise por nome, id ou autor...'
+                        value={searchStudent}
+                        onChange={(event) => setSearchStudent(event.target.value)}
+                        />
+                    </div>
+            </section>
+ </article>
 <section>
 
         <Table striped bordered hover>
@@ -109,7 +147,7 @@ export function Lista() {
                         </thead>
                         <tbody>
                             { listStudents &&
-                                listStudents.map((students) =>{
+                                filterStudents.map((students) =>{
                                     return(
                                         <tr key={students.idlivros}>
                                         <td>{students.idlivros}</td>
