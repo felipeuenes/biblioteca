@@ -68,10 +68,7 @@ export function Emprestimo() {
                                         {/* <FormUpdate modalClose={modalClose} studentData={studentData}/> */}
                                         <FormPessoas/>
                      </Modal.Body>
-                     <Modal.Footer>
-                    
-                            <Button type="submit" variant='success'>Cadastrar</Button>
-                    </Modal.Footer>
+                     
                         
                         </Modal>
 
