@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
         errorElement: <PageError/>,
         children: [
             {path: "/", element: <Home/>},
-            {path: "/emprestimos", element: <Emprestimo/>},
+            {path: "/reserva", element: <Emprestimo/>},
             {path: "/lista", element: <Lista/>},
            
         ]
