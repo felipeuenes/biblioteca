@@ -1,42 +1,46 @@
 import { Container } from "./style";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+
 import { useForm } from "react-hook-form";
+import { Loading } from "../Loading";
 
 
 
 
-export function FormPessoas() {
+export function FormPessoas({modalClose}) {
     
-
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
+
+
     
+    
+    const APIreserva = 'http://localhost:3000/reservasCadas';
+
     console.log(errors);
 
-    const [validated, setValidated] = useState(false);
-    const [listStudents, setListStudents] = useState([])
+   
+    const [listBooks, setListBooks] = useState([])
 
-
+   
 
     const API = 'http://localhost:3000/livros/';
 
-    function fetchStudents(){
+    function fetchReservas(){
         axios.get(API)
-        .then((res) => setListStudents(res.data))
+        .then((res) => setListBooks(res.data))
         .catch((error) => alert(error.response.data));
     }
 
     useEffect(() => {
-        fetchStudents();
+        fetchReservas();
+       
     }, [])
 
 
-    console.log(listStudents);
+    console.log(listBooks);
 
-    const APIreserva = 'http://localhost:3000/reservasCadas';
+    
 
     function onSubmit(data) {
     
@@ -45,18 +49,20 @@ export function FormPessoas() {
         axios.post(APIreserva, data)
         .then((res) => {
             alert(res.data)
-            fetchStudents()
+            fetchReservas()
             reset()
-            modalCloseRegister()
+            modalClose()
+           
         })
         .catch((error) => alert(error.response.data))
-
-        
       
     }
 
+    
+
     return(
         <Container>
+
 
 
 <section className="formularioPessoas">
@@ -73,12 +79,17 @@ export function FormPessoas() {
                 </section>
 
         <label htmlFor="">Livro:</label>
-        <select className="form-select" aria-label="Default select example" name="livros" {...register('livros', {required: true})}>
+        <select className="form-select" aria-label="Default select example" name="livro" {...register('livro', {required: true})}>
 
-            {listStudents.map((books) => {
+            {listBooks.map((books) => {
                 return(
                     
-                    <option value={books.name} key={books.idlivros}>{books.name} </option>
+                    <option
+                    value={books.name}
+                    key={books.idlivros}
+                    >
+                        {books.name} 
+                    </option>
                     
                     )
                 })}

@@ -10,6 +10,14 @@ export const Container = styled.div`
     width: 80%;
     margin: 0 auto;
     
+    .topReservas{
+        display: flex;
+        gap: 3.2rem;
+    }
+    #inputSearchReservas{
+        width: 30.0rem;
+    }
+    
     h1{
         text-align: center;
         margin-bottom: 3.2rem;

@@ -11,7 +11,7 @@ import { Container } from './style';
 
 
 
-export function FormUpdate({modalClose, studentData}){
+export function FormUpdate({modalClose, studentData, fetchStudents}){
 
     const [validated, setValidated] = useState(false);
     const [studentDataForm, setStudentDataForm] = useState({

@@ -180,7 +180,11 @@ export function Lista() {
                                     <Modal.Title>Aluno</Modal.Title>
                                 </Modal.Header>
                             <Modal.Body>
-                                        <FormUpdate modalClose={modalClose} studentData={studentData}/>
+                                        <FormUpdate
+                                        modalClose={modalClose}
+                                        studentData={studentData}
+                                        fetchStudents={fetchStudents}
+                                        />
 
                             </Modal.Body>
                         
