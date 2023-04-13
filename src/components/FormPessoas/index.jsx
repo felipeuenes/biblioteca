@@ -49,9 +49,9 @@ export function FormPessoas({modalClose}) {
         axios.post(APIreserva, data)
         .then((res) => {
             alert(res.data)
-            fetchReservas()
             reset()
             modalClose()
+            fetchReservas()
            
         })
         .catch((error) => alert(error.response.data))

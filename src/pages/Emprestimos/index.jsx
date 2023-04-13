@@ -7,7 +7,7 @@ import Table from 'react-bootstrap/Table'
 import Modal from 'react-bootstrap/Modal'
 import { BsFillTrash3Fill } from 'react-icons/bs'
 import { Loading } from "../../components/Loading";
-
+import { AiOutlineSearch } from 'react-icons/ai'
 
 
 export function Emprestimo() {
@@ -83,7 +83,7 @@ export function Emprestimo() {
             </section>
             <section>
             <div className='inputSection'>
-                        <label htmlFor="inputSearchReservas" className='labelBusca'>Buscar reserva:</label>
+                        {/* <label htmlFor="inputSearchReservas" className='labelBusca'>Pesquisa:</label> */}
                         {/* <BsSearch className='searchIcon'/> */}
                         <input
                         type="text"

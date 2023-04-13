@@ -14,8 +14,12 @@ export const Container = styled.div`
         display: flex;
         gap: 3.2rem;
     }
+
+   
     #inputSearchReservas{
         width: 30.0rem;
+        border-radius: 1.0rem;
+        padding: 0.4rem;
     }
     
     h1{
