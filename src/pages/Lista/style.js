@@ -41,5 +41,16 @@ export const Container = styled.div`
         background-color: #005500;
     }
 
+    #inputSearchStudents{
+        padding: 0.5rem;
+        border-radius: 0.8rem;
+    }
+
+    .inputSection{
+        display: flex;
+        gap: 1.6rem;
+        justify-content: center;
+        align-items: center;
+    }
 
 `;
